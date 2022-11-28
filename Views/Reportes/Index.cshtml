@@ -32,7 +32,7 @@
     <tbody>
 @foreach (var item in Model) {
             
-            float vel = 2000 / (item.Minutos * 60) + item.Segundos;
+            float vel = (float)(2000 / ((float)(item.Minutos * 60) + (float)item.Segundos));
             promedio = promedio + vel;
             <tr>
             <td>
