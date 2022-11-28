@@ -1,0 +1,53 @@
+﻿@model IEnumerable<RacingRecordsMVC.Models.Competidor>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Administración de competidores</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Agregar</a>
+</p>
+<table class="table table-primary">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Identificacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido2)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Identificacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido2)
+            </td>
+            <td>
+                <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.IdCompetidor">Editar</a> |
+                <a asp-action="Details" class="btn btn-primary" asp-route-id="@item.IdCompetidor">Ver</a> |
+                <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.IdCompetidor">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

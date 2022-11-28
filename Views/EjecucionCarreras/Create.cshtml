@@ -1,0 +1,45 @@
+﻿@model RacingRecordsMVC.Models.EjecucionCarrera
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Incluir competidor en carrera</h1>
+
+<h4>Carrera</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IdCompetidor" class="control-label"></label>
+                <select asp-for="IdCompetidor" class ="form-control" asp-items="ViewBag.IdCompetidor"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Minutos" class="control-label"></label>
+                <input asp-for="Minutos" class="form-control" />
+                <span asp-validation-for="Minutos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Segundos" class="control-label"></label>
+                <input asp-for="Segundos" class="form-control" />
+                <span asp-validation-for="Segundos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumeroCompetidor" class="control-label"></label>
+                <input asp-for="NumeroCompetidor" class="form-control" />
+                <span asp-validation-for="NumeroCompetidor" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-2">
+                <input type="submit" value="Agregar" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Regresar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

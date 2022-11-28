@@ -1,0 +1,76 @@
+﻿@model IEnumerable<RacingRecordsMVC.Models.EjecucionCarrera>
+
+@{
+    ViewData["Title"] = "Index";
+    float mayorVal = 0;
+    float menorVal = 0;
+    float promedio = 0;
+}
+ 
+
+<h1>Reporte de velocidad</h1>
+
+<p>
+   +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+</p>
+
+
+<table class="table table-secondary">
+    <thead>
+        <tr>
+            <th>
+                Corredor
+            </th>
+            <th>
+                Tiempo(minutos, segundos)
+            </th>
+            <th>
+                m/s
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+            
+            float vel = 2000 / (item.Minutos * 60) + item.Segundos;
+            promedio = promedio + vel;
+            <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCompetidorNavigation.NombreCompleto)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Minutos):@Html.DisplayFor(modelItem => item.Segundos)
+            </td>
+            <td>
+                @vel m/s
+            </td>
+            </tr>
+
+            @if (mayorVal<vel)
+            {
+                mayorVal = vel;
+            }
+            @if (menorVal == 0)
+            {
+                menorVal = vel;
+            }
+            @if (menorVal>vel) {
+                menorVal = vel;
+            }
+        }
+    </tbody>
+</table>
+
+@{
+    promedio = promedio / 10;
+}
+
+<label>Mejor velocidad: </label>
+<label>@mayorVal m/s</label>
+<br/>
+<label>Peor velocidad: </label>
+<label>@menorVal m/s</label>
+
+<label>Promedio: </label>
+<label>@promedio m/s</label>
+
