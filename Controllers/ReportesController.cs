@@ -23,7 +23,7 @@ namespace RacingRecordsMVC.Controllers
         {
             var racingRecordsContext = _context.EjecucionCarreras.Include(e => e.IdCompetidorNavigation);
 
-            if (racingRecordsContext.Count() == 10)
+            if (racingRecordsContext.Count() > 1)
             {
                 return View(await racingRecordsContext.ToListAsync());
             }
